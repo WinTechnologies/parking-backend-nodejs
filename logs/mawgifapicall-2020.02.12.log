@@ -1,0 +1,5 @@
+2020-02-12 00:03:21.231 INFO  Create CN ERROR: : column "observation_number" of relation "contravention" does not exist 
+2020-02-12 00:03:41.948 INFO  Create CN ERROR: : column "observation_number" of relation "contravention" does not exist 
+2020-02-12 00:03:51.484 INFO  Create CN ERROR: : column "observation_number" of relation "contravention" does not exist 
+2020-02-12 00:03:52.536 INFO  Create CN ERROR: : column "observation_number" of relation "contravention" does not exist 
+

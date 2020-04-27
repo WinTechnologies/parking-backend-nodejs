@@ -1,0 +1,122 @@
+{
+  "apps": [
+    {
+      "name": "MAPS_BACK_PROD",
+      "cwd": "/data/server/neuropolis_backend",
+      "script": "/usr/local/bin/npm",
+      "args": "run start:deploy-temp",
+      "node_args": "--max_old_space_size=8192",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/data/server/logs/MAPS-BACK-OUT/MAPS-BACK-PROD-out.log",
+      "error_file": "/data/server/logs/MAPS-BACK-ERROR/MAPS-BACK-PROD-error.log",
+      "pid_file": "/data/server/pids/MAPS-BACK-PROD-1.pid",
+      "env_production": {
+        "NODE_ENV": "production",
+        "PORT": 8003,
+
+        "PGHOST": "10.250.204.102",
+        "PGDATABASE": "parking_management",
+        "PGUSER": "prod",
+        "PGPASSWORD": "pr@d@cto",
+        "PGPORT": 5432,
+        "PGBOSS_SCHEMA": "pgboss",
+        "PGMAXPOOL": 5,
+        "PGMINPOOL": 0,
+        "PGIDLE": 10000,
+
+        "AccessToken_PrivateKey_FileName": "./keys/access-private.key",
+        "AccessToken_PublicKey_FileName": "./keys/access-public.key",
+        "RefreshToken_PrivateKey_FileName": "./keys/refresh-private.key",
+        "RefreshToken_PublicKey_FileName": "./keys/refresh-public.key",
+        "Token_Issuer": "Mawgif",
+        "Token_Subject": "sr.frontenddev210@gmail.com",
+        "Token_Audience": "https://mawgif.com",
+        "Token_Algorithm": "RS256",
+
+        "OSES_AUTH_SERVER_IP": "192.168.111.82",
+        "OSES_AUTH_SERVER_PORT": 9000,
+        "OSES_SERVER_IP": "192.168.111.82",
+        "OSES_SERVER_PORT": 9000,
+
+        "MAWGIF_SMTP_CLIENT_ID": "PATROL",
+        "MAWGIF_SMTP_USERNAME": "mawgif",
+        "MAWGIF_SMTP_PASSWORD": "M@Wgif7414"
+      }
+    },
+    {
+      "name": "MAPS_BACK_PROD_WORKER1",
+      "cwd": "/data/server/neuropolis_backend",
+      "script": "./bin/recall-OSES.js",
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "instances": 1,
+      "out_file": "/data/server/logs/MAPS-BACK-WORKER-OUT/MAPS-BACK-PROD-WORKER1-out.log",
+      "error_file": "/data/server/logs/MAPS-BACK-WORKER-ERROR/MAPS-BACK-PROD-WORKER1-error.log",
+      "pid_file": "/data/server/pids/MAPS-BACK-PROD-WORKER1-1.pid",
+      "kill_timeout" : 3000,
+      "shutdown_with_message" : true,
+      "env_production": {
+        "NODE_ENV": "production",
+
+        "PGHOST": "10.250.204.102",
+        "PGDATABASE": "parking_management",
+        "PGUSER": "prod",
+        "PGPASSWORD": "pr@d@cto",
+        "PGPORT": 5432,
+        "PGBOSS_SCHEMA": "pgboss",
+        "PGMAXPOOL": 5,
+        "PGMINPOOL": 0,
+        "PGIDLE": 10000,
+
+        "OSES_AUTH_SERVER_IP": "192.168.111.82",
+        "OSES_AUTH_SERVER_PORT": 9000,
+        "OSES_SERVER_IP": "192.168.111.82",
+        "OSES_SERVER_PORT": 9000,
+
+        "MAWGIF_SMTP_CLIENT_ID": "PATROL",
+        "MAWGIF_SMTP_USERNAME": "mawgif",
+        "MAWGIF_SMTP_PASSWORD": "M@Wgif7414"
+      }
+    },
+    {
+      "name": "OP_BACK_PROD",
+      "cwd": "/data/server/parking_cashier_back",
+      "script": "/usr/local/bin/npm",
+      "args": "run start:deploy-temp",
+      "node_args": "--max_old_space_size=8192",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/data/server/logs/OP-BACK-OUT/OP-BACK-PROD-out.log",
+      "error_file": "/data/server/logs/OP-BACK-ERROR/OP-BACK-PROD-error.log",
+      "pid_file": "/data/server/pids/OP-BACK-PROD-1.pid",
+      "env_production": {
+        "NODE_ENV": "production",
+        "PORT": 8005,
+
+        "PGHOST": "10.250.204.102",
+        "PGDATABASE": "parking_management",
+        "PGUSER": "prod",
+        "PGPASSWORD": "pr@d@cto",
+        "PGPORT": 5432,
+        "PGBOSS_SCHEMA": "pgboss",
+        "PGMAXPOOL": 5,
+        "PGMINPOOL": 0,
+        "PGIDLE": 10000,
+
+        "MAPS_API_BASE": "http://127.0.0.1:8003/api",
+
+        "OSES_AUTH_SERVER_IP": "192.168.111.82",
+        "OSES_AUTH_SERVER_PORT": 9000,
+        "OSES_SERVER_IP": "192.168.111.82",
+        "OSES_SERVER_PORT": 9000,
+
+        "MAWGIF_SMTP_CLIENT_ID": "PATROL",
+        "MAWGIF_SMTP_USERNAME": "mawgif",
+        "MAWGIF_SMTP_PASSWORD": "M@Wgif7414"
+      }
+    }
+  ]
+}

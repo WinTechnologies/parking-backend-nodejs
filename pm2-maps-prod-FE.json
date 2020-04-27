@@ -1,0 +1,36 @@
+{
+  "apps": [
+    {
+      "name": "MAPS_FRONT_PROD",
+      "cwd": "/var/www/html/neuropolis_front",
+      "script": "/usr/local/bin/npm",
+      "args": "run deploy:production-temp",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/var/www/html/logs/MAPS-FRONT-OUT/MAPS-FRONT-DEV-out.log",
+      "error_file": "/var/www/html/logs/MAPS-FRONT-ERROR/MAPS-FRONT-DEV-error.log",
+      "pid_file": "/var/www/html/pids/MAPS-FRONT-DEV-1.pid",
+      "env_production": {
+        "NODE_ENV": "production",
+        "PORT": 4203
+      }
+    },
+    {
+      "name": "OP_FRONT_PROD",
+      "cwd": "/var/www/html/parking_cashier_front",
+      "script": "/usr/local/bin/npm",
+      "args": "run deploy:production-temp",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/var/www/html/logs/OP-FRONT-OUT/OP-FRONT-PROD-out.log",
+      "error_file": "/var/www/html/logs/OP-FRONT-ERROR/OP-FRONT-PROD-error.log",
+      "pid_file": "/var/www/html/pids/OP-FRONT-PROD-1.pid",
+      "env_production": {
+        "NODE_ENV": "production",
+        "PORT": 4205
+      }
+    }
+  ]
+}

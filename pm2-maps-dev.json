@@ -1,0 +1,157 @@
+{
+  "apps": [
+    {
+      "name": "MAPS_BACK_DEV",
+      "cwd": "/home/debian/server/neuropolis_develop/neuropolis_backend",
+      "script": "/usr/local/bin/npm",
+      "args": "run start:deploy",
+      "node_args": "--max_old_space_size=8192",
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "instances": 1,
+      "merge_logs": true,
+      "out_file": "/home/debian/server/neuropolis_develop/logs/MAPS-BACK-OUT/MAPS-BACK-DEV-out.log",
+      "error_file": "/home/debian/server/neuropolis_develop/logs/MAPS-BACK-ERROR/MAPS-BACK-DEV-error.log",
+      "pid_file": "/home/debian/server/neuropolis_develop/pids/MAPS-BACK-DEV-1.pid",
+      "kill_timeout" : 3000,
+      "shutdown_with_message" : true,
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 8003,
+
+        "PGHOST": "217.182.89.217",
+        "PGDATABASE": "parking_management",
+        "PGUSER": "dev",
+        "PGPASSWORD": "parking_@cto",
+        "PGPORT": 5432,
+        "PGBOSS_SCHEMA": "pgboss",
+        "PGMAXPOOL": 5,
+        "PGMINPOOL": 0,
+        "PGIDLE": 10000,
+
+        "AccessToken_PrivateKey_FileName": "./keys/access-private.key",
+        "AccessToken_PublicKey_FileName": "./keys/access-public.key",
+        "RefreshToken_PrivateKey_FileName": "./keys/refresh-private.key",
+        "RefreshToken_PublicKey_FileName": "./keys/refresh-public.key",
+        "Token_Issuer": "Mawgif",
+        "Token_Subject": "sr.frontenddev210@gmail.com",
+        "Token_Audience": "https://mawgif.com",
+        "Token_Algorithm": "RS256",
+
+        "OSES_AUTH_SERVER_IP": "37.216.242.209",
+        "OSES_AUTH_SERVER_PORT": 9000,
+        "OSES_SERVER_IP": "37.216.242.221",
+        "OSES_SERVER_PORT": 8081,
+
+        "MAWGIF_SMTP_CLIENT_ID": "PATROL",
+        "MAWGIF_SMTP_USERNAME": "mawgif",
+        "MAWGIF_SMTP_PASSWORD": "M@Wgif7414"
+      }
+    },
+    {
+      "name": "MAPS_BACK_DEV_WORKER1",
+      "cwd": "/home/debian/server/neuropolis_develop/neuropolis_backend",
+      "script": "./bin/recall-OSES.js",
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "instances": 1,
+      "out_file": "/home/debian/server/neuropolis_develop/logs/MAPS-BACK-OUT/MAPS-BACK-DEV-WORKER1-out.log",
+      "error_file": "/home/debian/server/neuropolis_develop/logs/MAPS-BACK-ERROR/MAPS-BACK-DEV-WORKER1-error.log",
+      "pid_file": "/home/debian/server/neuropolis_develop/pids/MAPS-BACK-DEV-WORKER1-1.pid",
+      "kill_timeout" : 3000,
+      "shutdown_with_message" : true,
+      "env": {
+        "NODE_ENV": "development",
+
+        "PGHOST": "217.182.89.217",
+        "PGDATABASE": "parking_management",
+        "PGUSER": "dev",
+        "PGPASSWORD": "parking_@cto",
+        "PGPORT": 5432,
+        "PGBOSS_SCHEMA": "pgboss",
+        "PGMAXPOOL": 5,
+        "PGMINPOOL": 0,
+        "PGIDLE": 10000,
+
+        "OSES_AUTH_SERVER_IP": "37.216.242.209",
+        "OSES_AUTH_SERVER_PORT": 9000,
+        "OSES_SERVER_IP": "37.216.242.221",
+        "OSES_SERVER_PORT": 8081,
+
+        "MAWGIF_SMTP_CLIENT_ID": "PATROL",
+        "MAWGIF_SMTP_USERNAME": "mawgif",
+        "MAWGIF_SMTP_PASSWORD": "M@Wgif7414"
+      }
+    },
+    {
+      "name": "MAPS_FRONT_DEV",
+      "cwd": "/home/debian/server/neuropolis_develop/neuropolis_front",
+      "script": "/usr/local/bin/npm",
+      "args": "run deploy:dev",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/home/debian/server/neuropolis_develop/logs/MAPS-FRONT-OUT/MAPS-FRONT-DEV-out.log",
+      "error_file": "/home/debian/server/neuropolis_develop/logs/MAPS-FRONT-ERROR/MAPS-FRONT-DEV-error.log",
+      "pid_file": "/home/debian/server/neuropolis_develop/pids/MAPS-FRONT-DEV-1.pid",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 4203
+      }
+    },
+    {
+      "name": "OP_BACK_DEV",
+      "cwd": "/home/debian/server/cashier_develop/parking_cashier_back",
+      "script": "/usr/local/bin/npm",
+      "args": "run start:deploy",
+      "node_args": "--max_old_space_size=8192",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/home/debian/server/cashier_develop/logs/OP-BACK-OUT/OP-BACK-DEV-out.log",
+      "error_file": "/home/debian/server/cashier_develop/logs/OP-BACK-ERROR/OP-BACK-DEV-error.log",
+      "pid_file": "/home/debian/server/cashier_develop/pids/OP-BACK-DEV-1.pid",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 8005,
+
+        "PGHOST": "217.182.89.217",
+        "PGDATABASE": "parking_management",
+        "PGUSER": "dev",
+        "PGPASSWORD": "parking_@cto",
+        "PGPORT": 5432,
+        "PGBOSS_SCHEMA": "pgboss",
+        "PGMAXPOOL": 5,
+        "PGMINPOOL": 0,
+        "PGIDLE": 10000,
+
+        "MAPS_API_BASE": "http://127.0.0.1:8003/api",
+
+        "OSES_AUTH_SERVER_IP": "37.216.242.209",
+        "OSES_AUTH_SERVER_PORT": 9000,
+        "OSES_SERVER_IP": "37.216.242.221",
+        "OSES_SERVER_PORT": 8081,
+
+        "MAWGIF_SMTP_CLIENT_ID": "PATROL",
+        "MAWGIF_SMTP_USERNAME": "mawgif",
+        "MAWGIF_SMTP_PASSWORD": "M@Wgif7414"
+      }
+    },
+    {
+      "name": "OP_FRONT_DEV",
+      "cwd": "/home/debian/server/cashier_develop/parking_cashier_front",
+      "script": "/usr/local/bin/npm",
+      "args": "run deploy:dev",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/home/debian/server/cashier_develop/logs/OP-FRONT-OUT/OP-FRONT-DEV-out.log",
+      "error_file": "/home/debian/server/cashier_develop/logs/OP-FRONT-ERROR/OP-FRONT-DEV-error.log",
+      "pid_file": "/home/debian/server/cashier_develop/pids/OP-FRONT-DEV-1.pid",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 4205
+      }
+    }
+  ]
+}

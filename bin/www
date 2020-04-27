@@ -1,0 +1,196 @@
+#!/usr/bin/env node
+
+const app = require('../app');
+const debug = require('debug')('neuropolis:server');
+const http = require('http');
+const postgresPool = require('../helpers/postgresClient');
+const hhdTrackingService = require('../api/pg/hhd-tracking/hhd-tracking.service');
+const employeeService = require('../api/pg/employees/employees.service');
+let dataHolder = {};
+const getData = () => {
+    return dataHolder;
+};
+const setData = data => {
+    dataHolder = data;
+};
+
+
+const port = normalizePort(process.env.PORT || 8003);
+app.set('port', port);
+
+const server = http.createServer(app);
+const io = require('socket.io').listen(server);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port);
+
+const BulkInsertPayload = 20;
+const hhdBulkInserter = hhdTrackingService.createBulkInserter(BulkInsertPayload);
+
+io.on('connection', client => {
+    if (process.env.NODE_ENV === 'development') {
+        console.log(`connected! Id: ${client.id}, Connected: ${client.connected}`);
+        console.log('Rooms: ', client.rooms);
+    }
+
+    /* Sync agents positions */
+    client.on('sync', (data) => {
+        if (process.env.NODE_ENV === 'development') {
+            console.log('Synced Data: ', data);
+        }
+
+        const received_data = JSON.parse(data);
+        if (received_data.info && received_data.info.user_id) {
+            io.sockets.emit('update_position', received_data);
+            try {
+                // setData(received_data);
+                const hhdTrackingData = {
+                    imei: received_data.info.imei,
+                    serial_number: received_data.info.serial_number,
+                    latitude: received_data.latitude,
+                    longitude: received_data.longitude,
+                    device_mode: received_data.info.device_mode || 0,
+                    battery_status: received_data.info.battery_status || 0,
+                    battery_level: received_data.info.battery_level || 0,
+                    application_name: received_data.info.application_name,
+                    user_status: received_data.info.user_status,
+                    user_id: received_data.info.user_id,
+                    project_id: received_data.info.project_id
+                };
+
+                hhdBulkInserter.push(hhdTrackingData);
+                employeeService.updateEmployeeStatus(hhdTrackingData);
+            } catch (e) {
+                throw e;
+            }
+        }
+    });
+
+    client.on('logout', (data) => {
+        const received_data = JSON.parse(data);
+        if (received_data.info && received_data.info.login_id) {
+            io.sockets.emit('logout', received_data);
+        }
+    });
+
+
+
+    /* This part is added for testing purposes */
+
+    // // Enforcer
+    // const testing_enforcer = {'latitude':48.915103,'longitude':2.3775123,'info':{'firstname':'Amine','id':'60f37b90-8ddf-45c9-9cc0-39b2ae5b63fc','lastname':'Liazidi','site_id':'c2f6f34a-e3d9-4429-aa29-06c0290ac505','username':'amine.liazidi@datategy.net','usertype':'Enforcer'}};
+    //
+    // // Driver
+    // const testing_driver = {'latitude':48.916103,'longitude':2.3785123,'info':{'firstname':'B','id':'e465fa43-6b52-4846-a0ff-d81a57b180f6','lastname':'CL','site_id':'c2f6f34a-e3d9-4429-aa29-06c0290ac505','username':'mailtobadis@gmail.com','usertype':'Clamper'}};
+    //
+    // // Clamper
+    // const testing_clamper = {'latitude':48.917103,'longitude':2.3795123,'info':{'firstname':'Ahmed','id':'23f3d082-e21f-4be1-a6c1-35f8a9701bbd','lastname':'Kadri','site_id':'f9adf2de-3c09-4579-9f36-5a9d108883c7','username':'a.kadri117@gmail.com','usertype':'Driver'}};
+    //
+    // setInterval(() => {
+    //
+    //   io.sockets.emit('update_position', testing_enforcer);
+    //   io.sockets.emit('update_position', testing_driver);
+    //   io.sockets.emit('update_position', testing_clamper);
+    // }, 15000);
+
+    client.on('disconnect', () => { });
+});
+
+server.on('error', onError);
+server.on('listening', onListening);
+/*
+setInterval(() => {
+    io.sockets.emit('update_position', getData());
+}, 5000);
+*/
+/**
+ * Normalize a port into a number, string, or false.
+ */
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+        // named pipe
+        return val;
+    }
+
+    if (port >= 0) {
+        // port number
+        return port;
+    }
+
+    return false;
+}
+
+/**
+ * Event listener for HTTP server 'error' event.
+ */
+function onError(error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+
+    var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+}
+
+/**
+ * Event listener for HTTP server 'listening' event.
+ */
+
+function onListening() {
+    var addr = server.address();
+    var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+    debug('Listening on ' + bind);
+}
+
+const handleExit = (options, err) => {
+    console.info(`${options.message} signal received.`);
+    if (options.cleanup) {
+        console.log('Closing all connections...');
+        try {
+            server.close();
+            postgresPool.end();
+            setTimeout(() => process.exit(0), 3000);
+        } catch (err) {
+            return setTimeout(() => process.exit(1), 3000);
+        }
+    }
+
+    if (options.exit) {
+        if (err) console.error(err);
+        process.exit(err ? 1 : 0);
+    }
+};
+
+process.on('exit', handleExit.bind(null, { exit: true, message: 'exit' }));
+process.on('SIGINT', handleExit.bind(null, { cleanup: true, message: 'SIGINT' }));
+process.on('SIGTERM', handleExit.bind(null, { cleanup: true, message: 'SIGTERM' }));
+process.on('uncaughtException', handleExit.bind(null, { cleanup: true, message: 'uncaughtException' }));
+process.on('message', function (message) {
+    // pm2 start app.js --shutdown-with-message
+    // 'shutdown_with_message' : true in ecosystem file
+    console.info(`${message} signal received!!!`);
+    switch (message) {
+        case 'shutdown':
+            handleExit({ cleanup: true, message });
+            break;
+    }
+});
+
+exports.io = io;

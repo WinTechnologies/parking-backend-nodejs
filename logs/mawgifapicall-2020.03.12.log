@@ -1,0 +1,35 @@
+2020-03-12 01:03:56.541 INFO  PgBoss Started for Publish!:  
+2020-03-12 01:18:20.642 INFO  PgBoss Started for Publish!:  
+2020-03-12 01:21:29.277 INFO  PgBoss Started for Publish!:  
+2020-03-12 01:22:45.823 INFO  PgBoss Started for Publish!:  
+2020-03-12 01:24:40.264 INFO  PgBoss Started for Publish!:  
+2020-03-12 01:29:00.591 INFO  PgBoss Started for Publish!:  
+2020-03-12 01:31:40.286 INFO  PgBoss Started for Publish!:  
+2020-03-12 01:33:28.928 INFO  PgBoss Started for Publish!:  
+2020-03-12 01:34:46.502 INFO  PgBoss Started for Publish!:  
+2020-03-12 17:23:41.676 INFO  PgBoss Started for Publish!:  
+2020-03-12 21:00:21.903 INFO  PgBoss Started for Publish!:  
+2020-03-12 21:28:18.777 INFO  PgBoss Started for Publish!:  
+2020-03-12 21:31:07.514 INFO  PgBoss Started for Publish!:  
+2020-03-12 21:43:24.551 INFO  PgBoss Started for Publish!:  
+2020-03-12 21:51:45.627 INFO  PgBoss Started for Publish!:  
+2020-03-12 21:56:28.665 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:23:39.671 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:28:36.165 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:28:53.950 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:34:50.939 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:36:42.883 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:37:36.201 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:38:10.907 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:39:00.914 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:41:59.836 ERROR PgBoss Start Error: connect ETIMEDOUT 217.182.89.217:5432 
+2020-03-12 22:43:59.411 ERROR PgBoss Start Error: connect ETIMEDOUT 217.182.89.217:5432 
+2020-03-12 22:44:45.953 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:46:16.816 INFO  PgBoss Started for Publish!:  
+2020-03-12 22:47:55.653 INFO  PgBoss Started for Publish!:  
+2020-03-12 23:25:39.153 INFO  PgBoss Started for Publish!:  
+2020-03-12 23:26:23.860 INFO  PgBoss Started for Publish!:  
+2020-03-12 23:35:46.825 INFO  PgBoss Started for Publish!:  
+2020-03-12 23:53:11.357 INFO  PgBoss Started for Publish!:  
+2020-03-12 23:59:30.009 INFO  PgBoss Started for Publish!:  
+

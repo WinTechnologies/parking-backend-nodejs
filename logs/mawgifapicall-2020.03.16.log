@@ -1,0 +1,28 @@
+2020-03-16 16:14:45.713 INFO  PgBoss Started for Publish!:  
+2020-03-16 16:46:38.990 INFO  Create MAPS CN(Transformed): 1111126225-2003151558189900003442 sent by MAPS 
+2020-03-16 16:46:43.259 INFO  Publish a recall OSES: CN #2003151558189900003442 
+2020-03-16 16:46:45.173 INFO  Create Cashier_Exit: T1584348404219 
+2020-03-16 16:46:45.174 INFO  Create Cashier_Ticket: T1584348404219 
+2020-03-16 17:16:01.639 INFO  PgBoss Started for Publish!:  
+2020-03-16 17:32:24.383 INFO  PgBoss Started for Publish!:  
+2020-03-16 17:36:52.285 INFO  PgBoss Started for Publish!:  
+2020-03-16 18:22:36.836 INFO  PgBoss Started for Publish!:  
+2020-03-16 18:24:13.669 INFO  PgBoss Started for Publish!:  
+2020-03-16 18:25:45.125 INFO  PgBoss Started for Publish!:  
+2020-03-16 18:26:11.919 INFO  PgBoss Started for Publish!:  
+2020-03-16 18:51:19.242 INFO  PgBoss Started for Publish!:  
+2020-03-16 19:54:15.370 INFO  PgBoss Started for Publish!:  
+2020-03-16 21:09:36.932 INFO  PgBoss Started for Publish!:  
+2020-03-16 21:25:03.182 INFO  Create MAPS CN(Transformed): 1111126224-2003142233339900003442 sent by MAPS 
+2020-03-16 21:25:10.537 INFO  Publish a recall OSES: CN #2003142233339900003442 
+2020-03-16 21:25:13.687 INFO  Create Cashier_Exit: T1584365112134 
+2020-03-16 21:25:13.688 INFO  Create Cashier_Ticket: T1584365112134 
+2020-03-16 21:44:43.923 INFO  PgBoss Started for Publish!:  
+2020-03-16 22:04:59.201 INFO  PgBoss Started for Publish!:  
+2020-03-16 22:56:06.576 INFO  PgBoss Started for Publish!:  
+2020-03-16 22:58:18.754 INFO  PgBoss Started for Publish!:  
+2020-03-16 23:09:39.930 INFO  PgBoss Started for Publish!:  
+2020-03-16 23:14:02.463 INFO  PgBoss Started for Publish!:  
+2020-03-16 23:25:12.282 INFO  PgBoss Started for Publish!:  
+2020-03-16 23:39:23.526 INFO  PgBoss Started for Publish!:  
+

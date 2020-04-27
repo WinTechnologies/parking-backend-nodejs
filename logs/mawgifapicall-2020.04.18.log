@@ -1,0 +1,5 @@
+2020-04-18 00:28:52.857 ERROR Get All CN ERROR: invalid input syntax for integer: "" 
+2020-04-18 00:34:58.308 ERROR Get All CN ERROR: bind message supplies 2 parameters, but prepared statement "" requires 10 
+2020-04-18 00:43:09.559 ERROR Get All CN ERROR: syntax error at end of input 
+2020-04-18 00:44:26.999 ERROR Get All CN ERROR: syntax error at end of input 
+

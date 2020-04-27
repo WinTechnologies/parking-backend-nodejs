@@ -1,0 +1,154 @@
+{
+  "apps": [
+    {
+      "name": "MAPS_BACK_UAT",
+      "cwd": "/home/deploy/neuropolis/neuropolis_backend",
+      "script": "/usr/local/bin/npm",
+      "args": "run start:deploy",
+      "node_args": "--max_old_space_size=8192",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/home/deploy/neuropolis/logs/MAPS-BACK-OUT/MAPS-BACK-UAT-out.log",
+      "error_file": "/home/deploy/neuropolis/logs/MAPS-BACK-ERROR/MAPS-BACK-UAT-error.log",
+      "pid_file": "/home/deploy/neuropolis/pids/MAPS-BACK-UAT-1.pid",
+      "env_staging": {
+        "NODE_ENV": "staging",
+        "PORT": 8003,
+
+        "PGHOST": "127.0.0.1",
+        "PGDATABASE": "parking_management",
+        "PGUSER": "deploy",
+        "PGPASSWORD": "d$pl@y",
+        "PGPORT": 5432,
+        "PGBOSS_SCHEMA": "pgboss",
+        "PGMAXPOOL": 5,
+        "PGMINPOOL": 0,
+        "PGIDLE": 10000,
+
+        "AccessToken_PrivateKey_FileName": "./keys/access-private.key",
+        "AccessToken_PublicKey_FileName": "./keys/access-public.key",
+        "RefreshToken_PrivateKey_FileName": "./keys/refresh-private.key",
+        "RefreshToken_PublicKey_FileName": "./keys/refresh-public.key",
+        "Token_Issuer": "Mawgif",
+        "Token_Subject": "sr.frontenddev210@gmail.com",
+        "Token_Audience": "https://mawgif.com",
+        "Token_Algorithm": "RS256",
+
+        "OSES_AUTH_SERVER_IP": "37.216.242.209",
+        "OSES_AUTH_SERVER_PORT": 9000,
+        "OSES_SERVER_IP": "37.216.242.221",
+        "OSES_SERVER_PORT": 8081,
+
+        "MAWGIF_SMTP_CLIENT_ID": "PATROL",
+        "MAWGIF_SMTP_USERNAME": "mawgif",
+        "MAWGIF_SMTP_PASSWORD": "M@Wgif7414"
+      }
+    },
+    {
+      "name": "MAPS_BACK_UAT_WORKER1",
+      "cwd": "/home/deploy/neuropolis/neuropolis_backend",
+      "script": "./bin/recall-OSES.js",
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "instances": 1,
+      "out_file": "/home/deploy/neuropolis/logs/MAPS-BACK-OUT/MAPS-BACK-UAT-WORKER1-out.log",
+      "error_file": "/home/deploy/neuropolis/logs/MAPS-BACK-ERROR/MAPS-BACK-UAT-WORKER1-error.log",
+      "pid_file": "/home/deploy/neuropolis/pids/MAPS-BACK-UAT-WORKER1-1.pid",
+      "kill_timeout" : 3000,
+      "shutdown_with_message" : true,
+      "env_staging": {
+        "NODE_ENV": "staging",
+
+        "PGHOST": "127.0.0.1",
+        "PGDATABASE": "parking_management",
+        "PGUSER": "deploy",
+        "PGPASSWORD": "d$pl@y",
+        "PGPORT": 5432,
+        "PGBOSS_SCHEMA": "pgboss",
+        "PGMAXPOOL": 5,
+        "PGMINPOOL": 0,
+        "PGIDLE": 10000,
+
+        "OSES_AUTH_SERVER_IP": "37.216.242.209",
+        "OSES_AUTH_SERVER_PORT": 9000,
+        "OSES_SERVER_IP": "37.216.242.221",
+        "OSES_SERVER_PORT": 8081,
+
+        "MAWGIF_SMTP_CLIENT_ID": "PATROL",
+        "MAWGIF_SMTP_USERNAME": "mawgif",
+        "MAWGIF_SMTP_PASSWORD": "M@Wgif7414"
+      }
+    },
+    {
+      "name": "MAPS_FRONT_UAT",
+      "cwd": "/home/deploy/neuropolis/neuropolis_front",
+      "script": "/usr/local/bin/npm",
+      "args": "run deploy:uat",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/home/deploy/neuropolis/logs/MAPS-FRONT-OUT/MAPS-FRONT-UAT-out.log",
+      "error_file": "/home/deploy/neuropolis/logs/MAPS-FRONT-ERROR/MAPS-FRONT-UAT-error.log",
+      "pid_file": "/home/deploy/neuropolis/pids/MAPS-FRONT-UAT-1.pid",
+      "env_staging": {
+        "NODE_ENV": "staging",
+        "PORT": 4203
+      }
+    },
+    {
+      "name": "OP_BACK_UAT",
+      "cwd": "/home/deploy/cashier/parking_cashier_back",
+      "script": "/usr/local/bin/npm",
+      "args": "run start:deploy",
+      "node_args": "--max_old_space_size=8192",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/home/deploy/cashier/logs/OP-BACK-OUT/OP-BACK-UAT-out.log",
+      "error_file": "/home/deploy/cashier/logs/OP-BACK-ERROR/OP-BACK-UAT-error.log",
+      "pid_file": "/home/deploy/cashier/pids/OP-BACK-UAT-1.pid",
+      "env_staging": {
+        "NODE_ENV": "staging",
+        "PORT": 8005,
+
+        "PGHOST": "127.0.0.1",
+        "PGDATABASE": "parking_management",
+        "PGUSER": "deploy",
+        "PGPASSWORD": "d$pl@y",
+        "PGPORT": 5432,
+        "PGBOSS_SCHEMA": "pgboss",
+        "PGMAXPOOL": 5,
+        "PGMINPOOL": 0,
+        "PGIDLE": 10000,
+
+        "MAPS_API_BASE": "http://127.0.0.1:8003/api",
+
+        "OSES_AUTH_SERVER_IP": "37.216.242.209",
+        "OSES_AUTH_SERVER_PORT": 9000,
+        "OSES_SERVER_IP": "37.216.242.221",
+        "OSES_SERVER_PORT": 8081,
+
+        "MAWGIF_SMTP_CLIENT_ID": "PATROL",
+        "MAWGIF_SMTP_USERNAME": "mawgif",
+        "MAWGIF_SMTP_PASSWORD": "M@Wgif7414"
+      }
+    },
+    {
+      "name": "OP_FRONT_UAT",
+      "cwd": "/home/deploy/cashier/parking_cashier_front",
+      "script": "/usr/local/bin/npm",
+      "args": "run deploy:uat",
+      "instances": 1,
+      "exec_interpreter": "node",
+      "exec_mode": "fork",
+      "out_file": "/home/deploy/cashier/logs/OP-FRONT-OUT/OP-FRONT-UAT-out.log",
+      "error_file": "/home/deploy/cashier/logs/OP-FRONT-ERROR/OP-FRONT-UAT-error.log",
+      "pid_file": "/home/deploy/cashier/pids/OP-FRONT-UAT-1.pid",
+      "env_staging": {
+        "NODE_ENV": "staging",
+        "PORT": 4205
+      }
+    }
+  ]
+}

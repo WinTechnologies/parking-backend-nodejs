@@ -1,0 +1,23 @@
+2020-03-18 00:04:30.860 INFO  PgBoss Started for Publish!:  
+2020-03-18 00:30:07.145 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 00:33:29.162 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 00:36:56.810 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 00:37:29.536 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 00:38:01.499 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 00:51:32.063 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 15:29:45.032 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 20:38:00.584 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 20:38:22.082 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 21:06:53.796 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 21:07:26.318 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 21:23:01.627 ERROR PgBoss Start Error: Migration to version 11 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 21:38:51.343 ERROR PgBoss Start Error: Migration to version 11 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 21:42:51.491 ERROR PgBoss Start Error: Migration to version 11 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 21:49:32.573 ERROR PgBoss Start Error: Migration to version 11 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 21:57:09.357 ERROR PgBoss Start Error: Migration to version 11 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 22:04:03.940 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 22:21:45.834 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 22:39:58.793 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 22:48:06.131 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+2020-03-18 23:16:59.436 ERROR PgBoss Start Error: Migration to version 12 failed because it could not be found.  Your database may have been upgraded by a newer version of pg-boss 
+
